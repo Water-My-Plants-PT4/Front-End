@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { axiosWithAuth } from '../helpers/axiosWithAuth';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Login = () => {
   const [form, setForm] = useState({

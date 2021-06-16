@@ -14,7 +14,14 @@ const Login = () => {
 
       const handleSubmit = (e) => {
         e.preventDefault();
-        
+        axios.post('https://reqres.in/', this.state.credentials)
+          .then(res => {
+            localStorage.setItem('token', res.data.payload)
+        })
+          .catch(err => {
+            console.log(err);
+          })
+       
       };
 
     return (
@@ -22,12 +29,12 @@ const Login = () => {
         <h1>Welcome to Water My Plants!</h1>
         <div data-testid="loginForm" className="login-form">
           <form onSubmit={handleSubmit}>
-            <label>User Name: </label>
-            <input data-testid="username" name="username" value={form.username} onChange={handleChange} />
+            <label htmlFor='username'>User Name: </label>
+            <input name="username" value={form.username} onChange={handleChange} />
             <label>Password: </label>
-            <input data-testid="pasword" name="password" value={form.password} onChange={handleChange} />
+            <input name="password" value={form.password} onChange={handleChange} />
             <label>Phone Number: </label>
-            <input data-testid="phonenumber" name="phonenumber" value={form.phonenumber} onChange={handleChange} />
+            <input name="phonenumber" value={form.phonenumber} onChange={handleChange} />
             <button>Submit</button>
           </form>
         </div>

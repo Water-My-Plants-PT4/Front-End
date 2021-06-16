@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import axios from 'axios';
+import { axiosWithAuth } from '../helpers/axiosWithAuth';
 
 const Login = () => {
   const [form, setForm] = useState({
@@ -18,10 +18,11 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post('https://reqres.in/', this.state.credentials)
+    axiosWithAuth()
+      .post('users?page=2', form)
       .then((res) => {
-        localStorage.setItem('token', res.data.payload);
+        // localStorage.setItem('token', res.data.payload); Probably need this later, this is just a small fix
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +32,7 @@ const Login = () => {
   return (
     <div>
       <h1>Welcome to Water My Plants!</h1>
-      <div data-testid="loginForm" className="login-form">
+      <div className="login-form">
         <form onSubmit={handleSubmit}>
           <label htmlFor="username">User Name: </label>
           <input

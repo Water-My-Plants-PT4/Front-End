@@ -19,7 +19,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axiosWithAuth()
-      .post('users?page=2', form)
+      .post('auth/login', form)
       .then((res) => {
         // localStorage.setItem('token', res.data.payload); Probably need this later, this is just a small fix
         console.log(res);

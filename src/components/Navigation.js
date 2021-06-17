@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 function Navigation() {
   return (
     <div>
-      <h2>Plants Watering App</h2>
-      <Link to="/login">
-        <button>Login</button>
-      </Link>
-      <button>Logout</button>
-      <button>Profile</button>
+      <nav>
+        <h2>Plants Watering App</h2>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
+        <Link to="/">
+          <button>Logout</button>
+        </Link>
+
+        <button>Profile</button>
+      </nav>
     </div>
   );
 }

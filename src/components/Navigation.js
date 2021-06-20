@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useState } from 'react';
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core';
@@ -8,6 +9,7 @@ import Menu from "@material-ui/core/Menu"; // For menu button.
 import MenuItem from "@material-ui/core/MenuItem"; // For menu button.
 import { flexbox } from '@material-ui/system';
 import { Link } from 'react-router-dom';
+
 
 
 
@@ -24,6 +26,7 @@ function Navigation() {
   };
 
   return (
+
     <>
       <CssBaseline />
       <AppBar position="relative">
@@ -76,6 +79,7 @@ function Navigation() {
       </Toolbar>
       </AppBar>
     </>
+
   );
 }
 export default Navigation;

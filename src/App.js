@@ -1,10 +1,11 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 
-import Login from './components/Login';
-import Navigation from './components/Navigation';
-import PrivateRoute from './components/PrivateRoute';
-import './App.css';
+import Login from "./components/Login";
+import UserHome from "./views/user-home/UserHome";
+import Navigation from "./components/Navigation";
+import PrivateRoute from "./components/PrivateRoute";
+import "./App.css";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
 
       <Switch>
         <Route path="/login" component={Login} />
+        <Route path="/profile">
+          <UserHome />
+        </Route>
       </Switch>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
+import Registration from "./views/registration/Registration";
 import Login from "./components/Login";
 import UserHome from "./views/user-home/UserHome";
 import PlantAdd from "./views/plant-add/PlantAdd";
@@ -16,6 +17,7 @@ function App() {
       <Navigation />
 
       <Switch>
+        <Route exact path="/sign-up" component={Registration} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/profile">
           <UserHome />

@@ -57,7 +57,15 @@ function Navigation() {
               open={Boolean(anchorEl)}
               onClose={handleClose}
               justifyContent='center' // Kyle added this. Not sure what it does. 
-            >
+            > 
+
+              <MenuItem onClick={handleClose}>
+                <Link to="/">
+                  Home
+                </Link>
+              </MenuItem>
+
+
               <MenuItem onClick={handleClose}>
                 <Link to="/profile">
                   View plants

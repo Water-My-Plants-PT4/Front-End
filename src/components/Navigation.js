@@ -1,6 +1,5 @@
 
 import React from 'react';
-// import { flexbox } from '@material-ui/system';
 import { useState } from 'react';
 import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core';
 import EcoIcon from '@material-ui/icons/Eco'; // Leaf icon.
@@ -47,7 +46,7 @@ function Navigation() {
               aria-controls="simple-menu"
               aria-haspopup="true"
               onClick={handleClick}
-            style={{ color: 'white' }} // This changes the MENU text color to white. It was black.
+              style={{ color: 'white' }} // This changes the MENU text color to white. It was black.
             >
               Open Menu
             </Button>
@@ -57,24 +56,32 @@ function Navigation() {
               keepMounted
               open={Boolean(anchorEl)}
               onClose={handleClose}
-            justifyContent='center' // Kyle added this. Not sure what it does. 
+              justifyContent='center' // Kyle added this. Not sure what it does. 
             >
               <MenuItem onClick={handleClose}>
-                <Link to="/login">
+                <Link to="/profile">
                   View plants
                 </Link>
               </MenuItem>
 
               <MenuItem onClick={handleClose}>
-                <Link to="/">
-                  Edit profile
+                <Link to="create-plant">
+                  Create plant
                 </Link>
               </MenuItem>
+
               <MenuItem onClick={handleClose}>
-                <Link to="/">
-                  Logout
+                <Link to="/login">
+                  Log in
                 </Link>
               </MenuItem>
+
+              <MenuItem onClick={handleClose}>
+                <Link to="/sign-up">
+                  Sign up
+                </Link>
+              </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>

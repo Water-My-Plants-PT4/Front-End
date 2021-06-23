@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -8,12 +9,25 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import plant from "../../assets/images/plant-pic-1.jpg";
+import axios from "axios";
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
   },
 });
+
+const handleDelete = (id) => {
+  axios
+    .delete(`https://water-my-plants-61621.herokuapp.com/api/plants/${id}`)
+    .then((res) => {
+      window.location.reload();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 const PlantCard = (props) => {
   const { details } = props;
   const classes = useStyles();
@@ -45,9 +59,15 @@ const PlantCard = (props) => {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          edit
+          <Link to={`plants/${details.id}`}>edit</Link>
         </Button>
-        <Button size="small" color="primary">
+        <Button
+          size="small"
+          color="primary"
+          onClick={() => {
+            handleDelete(details.id);
+          }}
+        >
           delete
         </Button>
       </CardActions>

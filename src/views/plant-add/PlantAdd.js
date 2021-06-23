@@ -37,8 +37,8 @@ function PlantAdd() {
     const newPlant = {
       nickname: formValues.nickname,
       species: formValues.species,
-      h2o_frequency: formValues.h2o_frequency,
-      image_url: formValues.image_url,
+      // h2o_frequency: formValues.h2o_frequency,
+      // image_url: formValues.image_url,
     };
 
     axios

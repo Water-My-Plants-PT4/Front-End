@@ -38,7 +38,7 @@ function Registration() {
   const handleChange = (evt) => {
     const inputName = evt.target.name;
     const inputValue = evt.target.value;
-    setFormValues({ ...formValues, [inputName]: inputValue });
+    setFormValues({ [evt.target.name]: evt.target.value });
   };
 
   const handleSubmit = (evt) => {
@@ -71,7 +71,7 @@ function Registration() {
       <form onSubmit={handleSubmit}>
         <TextField
           id="outlined-basic"
-          name="Username"
+          name="username"
           label="Username"
           variant="outlined"
           value={formValues.username}
@@ -79,7 +79,7 @@ function Registration() {
         />
         <TextField
           id="outlined-basic"
-          name="Phone Number"
+          name="phone_number"
           label="Phone Number"
           variant="outlined"
           value={formValues.phone_number}
@@ -87,7 +87,7 @@ function Registration() {
         />
         <TextField
           id="outlined-basic"
-          name="Password"
+          name="password"
           label="Password"
           variant="outlined"
           value={formValues.password}

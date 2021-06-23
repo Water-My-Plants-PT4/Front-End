@@ -1,21 +1,30 @@
-
 import React from 'react';
 import { useState } from 'react';
-import { Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from '@material-ui/core';
+import {
+  Typography,
+  AppBar,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  CssBaseline,
+  Grid,
+  Toolbar,
+  Container,
+} from '@material-ui/core';
 import EcoIcon from '@material-ui/icons/Eco'; // Leaf icon.
-import Box from '@material-ui/core/Box'; // Used for spacing. 
-import Button from "@material-ui/core/Button"; // For menu button.
-import Menu from "@material-ui/core/Menu"; // For menu button.
-import MenuItem from "@material-ui/core/MenuItem"; // For menu button.
+import Box from '@material-ui/core/Box'; // Used for spacing.
+import Button from '@material-ui/core/Button'; // For menu button.
+import Menu from '@material-ui/core/Menu'; // For menu button.
+import MenuItem from '@material-ui/core/MenuItem'; // For menu button.
 import { Link } from 'react-router-dom';
 
-// import { makeStyles } from '@material-ui/core/styles'; // Kyle showed me this. It does not seem to be needed right now but I am saving it for future reference. 
+// import { makeStyles } from '@material-ui/core/styles'; // Kyle showed me this. It does not seem to be needed right now but I am saving it for future reference.
 // const useStyles = makeStyles({
 //   box: {
 //     color: 'white',
 //   },
 // });
-
 
 function Navigation() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -31,17 +40,23 @@ function Navigation() {
       <AppBar position="relative">
         <Toolbar>
           {/* Leaf icon & 'Water My Plants' text in navbar */}
-          <Box display="flex" alignItems="center" justifyContent="flex-start" width="100%">
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-start"
+            width="100%">
             <EcoIcon />
             <Box p={1}>
-              <Typography varient="h6" >
-                Water My Plants
-              </Typography>
+              <Typography variant="h6">Water My Plants</Typography>
             </Box>
           </Box>
 
           {/* Menu button: */}
-          <Box display="flex" alignItems="center" justifyContent="flex-end" width="100%">
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-end"
+            width="100%">
             <Button
               aria-controls="simple-menu"
               aria-haspopup="true"
@@ -56,40 +71,27 @@ function Navigation() {
               keepMounted
               open={Boolean(anchorEl)}
               onClose={handleClose}
-              justifyContent='center' // Kyle added this. Not sure what it does. 
-            > 
-
+              justifyContent="center" // Kyle added this. Not sure what it does.
+            >
               <MenuItem onClick={handleClose}>
-                <Link to="/">
-                  Home
-                </Link>
-              </MenuItem>
-
-
-              <MenuItem onClick={handleClose}>
-                <Link to="/profile">
-                  View plants
-                </Link>
+                <Link to="/">Home</Link>
               </MenuItem>
 
               <MenuItem onClick={handleClose}>
-                <Link to="create-plant">
-                  Create plant
-                </Link>
+                <Link to="/profile">View plants</Link>
               </MenuItem>
 
               <MenuItem onClick={handleClose}>
-                <Link to="/login">
-                  Log in
-                </Link>
+                <Link to="create-plant">Create plant</Link>
               </MenuItem>
 
               <MenuItem onClick={handleClose}>
-                <Link to="/sign-up">
-                  Sign up
-                </Link>
+                <Link to="/login">Log in</Link>
               </MenuItem>
 
+              <MenuItem onClick={handleClose}>
+                <Link to="/sign-up">Sign up</Link>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
@@ -98,4 +100,3 @@ function Navigation() {
   );
 }
 export default Navigation;
-

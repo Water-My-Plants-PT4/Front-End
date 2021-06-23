@@ -1,16 +1,16 @@
 // import react ,useState , Martial Ui,axios
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > *": {
+    '& > *': {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: '25ch',
     },
   },
 }));
@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
 //pass new user object through to api
 
 const initialFormValues = {
-  username: "",
-  phone_number: "",
-  password: "",
+  username: '',
+  phone_number: '',
+  password: '',
 };
 
 function Registration() {
@@ -52,12 +52,12 @@ function Registration() {
 
     axios
       .post(
-        "https://water-my-plants-61621.herokuapp.com/api/auth/register",
+        'https://water-my-plants-61621.herokuapp.com/api/auth/register',
         newUser
       )
       .then((res) => {
         if (res.data.username) {
-          history.replace("/sign-up");
+          history.replace('/sign-up');
         }
       });
   };

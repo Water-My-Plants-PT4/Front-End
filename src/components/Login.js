@@ -1,13 +1,14 @@
-import React from 'react';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Login = () => {
   const [form, setForm] = useState({
     username: '',
     password: '',
-    phonenumber: '',
   });
+
+  const { push } = useHistory();
 
   const handleChange = (e) => {
     setForm({
@@ -21,8 +22,8 @@ const Login = () => {
     axiosWithAuth()
       .post('auth/login', form)
       .then((res) => {
-        // localStorage.setItem('token', res.data.payload); Probably need this later, this is just a small fix
-        console.log(res);
+        localStorage.setItem('token', res.data.token);
+        push('/profile');
       })
       .catch((err) => {
         console.log(err);
@@ -42,14 +43,9 @@ const Login = () => {
           />
           <label htmlFor="password">Password: </label>
           <input
+            type="password"
             name="password"
             value={form.password}
-            onChange={handleChange}
-          />
-          <label htmlFor="phonenumber">Phone Number: </label>
-          <input
-            name="phonenumber"
-            value={form.phonenumber}
             onChange={handleChange}
           />
           <button>Submit</button>

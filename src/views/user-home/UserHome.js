@@ -1,30 +1,33 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import PlantCard from "./PlantCard";
-import { Link } from "react-router-dom";
+import React, { useEffect } from 'react';
+import PlantCard from './PlantCard';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-export default function Home() {
-  const [plants, setPlants] = useState([]);
+import { fetchPlants } from '../../actions';
+
+const Home = (props) => {
   useEffect(() => {
-    axios
-      .get("https://water-my-plants-61621.herokuapp.com/api/plants")
-      .then((res) => {
-        setPlants(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    props.fetchPlants();
   }, []);
+
   return (
     <div>
       <h2>My Plants User Page</h2>
       <Link to="/create-plant">
         <button>Add Plants</button>
       </Link>
-      {plants &&
-        plants.map((plant) => {
+      {props.plantsArray &&
+        props.plantsArray.map((plant) => {
           return <PlantCard details={plant} key={plant.id} />;
         })}
     </div>
   );
-}
+};
+
+const mapStateToProps = (state) => {
+  return {
+    plantsArray: state.plantsArray,
+  };
+};
+
+export default connect(mapStateToProps, { fetchPlants })(Home);

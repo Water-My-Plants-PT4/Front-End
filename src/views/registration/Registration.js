@@ -1,16 +1,16 @@
 // import react ,useState , Martial Ui,axios
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    "& > *": {
+    '& > *': {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: '25ch',
     },
   },
 }));
@@ -26,19 +26,20 @@ const useStyles = makeStyles((theme) => ({
 //pass new user object through to api
 
 const initialFormValues = {
-  username: "",
-  phone_number: "",
-  password: "",
+  username: '',
+  phone_number: '',
+  password: '',
 };
 
 function Registration() {
   const history = useHistory();
   const [formValues, setFormValues] = useState(initialFormValues);
 
-  const handleChange = (evt) => {
-    const inputName = evt.target.name;
-    const inputValue = evt.target.value;
-    setFormValues({ ...formValues, [inputName]: inputValue });
+  const handleChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (evt) => {
@@ -52,13 +53,11 @@ function Registration() {
 
     axios
       .post(
-        "https://water-my-plants-61621.herokuapp.com/api/auth/register",
+        'https://water-my-plants-61621.herokuapp.com/api/auth/register',
         newUser
       )
       .then((res) => {
-        if (res.data.username) {
-          history.replace("/sign-up");
-        }
+        console.log(res);
       });
   };
 
@@ -71,7 +70,7 @@ function Registration() {
       <form onSubmit={handleSubmit}>
         <TextField
           id="outlined-basic"
-          name="Username"
+          name="username"
           label="Username"
           variant="outlined"
           value={formValues.username}
@@ -79,15 +78,16 @@ function Registration() {
         />
         <TextField
           id="outlined-basic"
-          name="Phone Number"
+          name="phone_number"
           label="Phone Number"
           variant="outlined"
           value={formValues.phone_number}
           onChange={handleChange}
         />
         <TextField
+          type="password"
           id="outlined-basic"
-          name="Password"
+          name="password"
           label="Password"
           variant="outlined"
           value={formValues.password}

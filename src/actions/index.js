@@ -5,6 +5,7 @@ export const SET_USER_TOKEN = 'SET_USER_TOKEN';
 export const USER_LOGIN_FAILURE = 'USER_LOGIN_FAILURE';
 export const FETCH_PLANTS = 'FETCH_PLANTS';
 export const SET_USER_PLANTS = 'SET_USER_PLANTS';
+export const DELETE_PLANT = 'DELETE_PLANT';
 
 export const userLogin = () => (dispatch) => {
   dispatch({ type: USER_LOGIN });
@@ -26,6 +27,17 @@ export const fetchPlants = () => (dispatch) => {
     .get('/plants')
     .then((res) => {
       dispatch({ type: SET_USER_PLANTS, payload: res.data });
+    })
+    .catch((err) => console.log(err));
+};
+
+export const deletePlant = (id) => (dispatch) => {
+  dispatch({ type: DELETE_PLANT });
+
+  axiosWithAuth()
+    .delete(`/plants/${id}`)
+    .then((res) => {
+      fetchPlants();
     })
     .catch((err) => console.log(err));
 };

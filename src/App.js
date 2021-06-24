@@ -19,15 +19,9 @@ function App() {
         <Switch>
           <Route exact path="/sign-up" component={Registration} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/profile">
-            <UserHome />
-          </Route>
-          <Route exact path="/create-plant">
-            <PlantAdd />
-          </Route>
-          <Route path="/plants/:id">
-            <PlantEdit />
-          </Route>
+          <PrivateRoute exact path="/profile" component={UserHome} />
+          <PrivateRoute exact path="/create-plant" component={PlantAdd} />
+          <PrivateRoute path="/plants/:id" component={PlantEdit} />
         </Switch>
       </div>
     </Router>

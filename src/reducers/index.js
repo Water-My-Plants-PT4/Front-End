@@ -3,12 +3,13 @@ import {
   SET_USER_TOKEN,
   FETCH_PLANTS,
   SET_USER_PLANTS,
+  DELETE_PLANT,
 } from '../actions';
 
 const initialState = {
   username: '',
   password: '',
-  phonenumber: '',
+  phone_number: '',
   plantsArray: [],
 };
 
@@ -26,6 +27,10 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         plantsArray: [...action.payload],
+      };
+    case DELETE_PLANT:
+      return {
+        ...state,
       };
     default:
       return state;

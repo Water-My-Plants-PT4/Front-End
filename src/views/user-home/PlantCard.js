@@ -1,15 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import plant from "../../assets/images/plant-pic-1.jpg";
-import axios from "axios";
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { connect } from 'react-redux';
+
+import plant from '../../assets/images/plant-pic-1.jpg';
+import { deletePlant } from '../../actions';
 
 const useStyles = makeStyles({
   root: {
@@ -17,18 +18,11 @@ const useStyles = makeStyles({
   },
 });
 
-const handleDelete = (id) => {
-  axios
-    .delete(`https://water-my-plants-61621.herokuapp.com/api/plants/${id}`)
-    .then((res) => {
-      window.location.reload();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
 const PlantCard = (props) => {
+  const handleDelete = (id) => {
+    props.deletePlant(id);
+  };
+
   const { details } = props;
   const classes = useStyles();
 
@@ -66,8 +60,7 @@ const PlantCard = (props) => {
           color="primary"
           onClick={() => {
             handleDelete(details.id);
-          }}
-        >
+          }}>
           delete
         </Button>
       </CardActions>
@@ -75,4 +68,4 @@ const PlantCard = (props) => {
   );
 };
 
-export default PlantCard;
+export default connect(null, { deletePlant })(PlantCard);

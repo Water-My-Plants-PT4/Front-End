@@ -28,12 +28,19 @@ import { Link } from 'react-router-dom';
 
 function Navigation() {
   const [anchorEl, setAnchorEl] = useState(null);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const logOut = () => {
+    localStorage.removeItem('token');
+  };
+
   return (
     <>
       <CssBaseline />
@@ -92,6 +99,14 @@ function Navigation() {
               <MenuItem onClick={handleClose}>
                 <Link to="/sign-up">Sign up</Link>
               </MenuItem>
+
+              {localStorage.getItem('token') && (
+                <MenuItem onClick={handleClose}>
+                  <Link to="/" onClick={logOut}>
+                    Log Out
+                  </Link>
+                </MenuItem>
+              )}
             </Menu>
           </Box>
         </Toolbar>

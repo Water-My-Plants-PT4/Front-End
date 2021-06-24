@@ -35,10 +35,11 @@ function Registration() {
   const history = useHistory();
   const [formValues, setFormValues] = useState(initialFormValues);
 
-  const handleChange = (evt) => {
-    const inputName = evt.target.name;
-    const inputValue = evt.target.value;
-    setFormValues({ ...formValues, [inputName]: inputValue });
+  const handleChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (evt) => {
@@ -56,9 +57,7 @@ function Registration() {
         newUser
       )
       .then((res) => {
-        if (res.data.username) {
-          history.replace('/sign-up');
-        }
+        console.log(res);
       });
   };
 
@@ -71,7 +70,7 @@ function Registration() {
       <form onSubmit={handleSubmit}>
         <TextField
           id="outlined-basic"
-          name="Username"
+          name="username"
           label="Username"
           variant="outlined"
           value={formValues.username}
@@ -79,15 +78,16 @@ function Registration() {
         />
         <TextField
           id="outlined-basic"
-          name="Phone Number"
+          name="phone_number"
           label="Phone Number"
           variant="outlined"
           value={formValues.phone_number}
           onChange={handleChange}
         />
         <TextField
+          type="password"
           id="outlined-basic"
-          name="Password"
+          name="password"
           label="Password"
           variant="outlined"
           value={formValues.password}

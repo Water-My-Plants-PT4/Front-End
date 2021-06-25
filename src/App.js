@@ -9,12 +9,14 @@ import PlantEdit from './views/plant-edit/PlantEdit';
 import UserEdit from './views/user-edit/UserEdit';
 import Navigation from './components/Navigation';
 import PrivateRoute from './components/PrivateRoute';
+import Footer from "./components/Footer";
 import './App.css';
 
 function App() {
   return (
     <Router>
       <div className="App">
+  
         <Navigation />
         <Switch>
           <Route exact path="/sign-up" component={Registration} />
@@ -23,7 +25,10 @@ function App() {
           <PrivateRoute exact path="/create-plant" component={PlantAdd} />
           <PrivateRoute path="/plants/:id" component={PlantEdit} />
         </Switch>
+        <Footer />
+  
       </div>
+    
     </Router>
   );
 }

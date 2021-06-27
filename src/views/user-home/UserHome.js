@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import { fetchPlants } from '../../actions';
 
 const Home = (props) => {
+  const { plantsArray, fetchPlants } = props;
+
   useEffect(() => {
-    props.fetchPlants();
-    console.log('1');
-  }, []);
+    fetchPlants();
+  }, [fetchPlants]);
 
   return (
     <div>
@@ -17,8 +18,8 @@ const Home = (props) => {
       <Link to="/create-plant">
         <button>Add Plants</button>
       </Link>
-      {props.plantsArray &&
-        props.plantsArray.map((plant) => {
+      {plantsArray &&
+        plantsArray.map((plant) => {
           return <PlantCard details={plant} key={plant.id} />;
         })}
     </div>

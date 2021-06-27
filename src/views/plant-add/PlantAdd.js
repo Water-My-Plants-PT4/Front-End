@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Link, useHistory } from 'react-router-dom';
-import axios from 'axios';
 import { axiosWithAuth } from '../../utils/axiosWithAuth';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     '& > *': {
+//       margin: theme.spacing(1),
+//       width: '25ch',
+//     },
+//   },
+// }));
 
 const intialFormValues = {
   nickname: '',
@@ -38,8 +37,8 @@ function PlantAdd() {
     const newPlant = {
       nickname: formValues.nickname,
       species: formValues.species,
-      // h2o_frequency: formValues.h2o_frequency,
-      // image_url: formValues.image_url,
+      h2o_frequency: formValues.h2o_frequency,
+      image_url: formValues.image_url,
     };
 
     axiosWithAuth()
@@ -51,7 +50,7 @@ function PlantAdd() {
       });
   };
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <div>

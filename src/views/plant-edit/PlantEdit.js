@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { Link, useHistory, useParams } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+// import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import axios from 'axios';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    "& > *": {
-      margin: theme.spacing(1),
-      width: "25ch",
-    },
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     "& > *": {
+//       margin: theme.spacing(1),
+//       width: "25ch",
+//     },
+//   },
+// }));
 
 const intialFormValues = {
-  nickname: "",
-  species: "",
-  h2o_frequency: "",
-  image_url: "",
+  nickname: '',
+  species: '',
+  h2o_frequency: '',
+  image_url: '',
 };
 
 function PlantEdit(props) {
@@ -38,8 +38,8 @@ function PlantEdit(props) {
     const editPlant = {
       nickname: formValues.nickname,
       species: formValues.species,
-      // h2o_frequency: formValues.h2o_frequency,
-      // image_url: formValues.image_url,
+      h2o_frequency: formValues.h2o_frequency,
+      image_url: formValues.image_url,
     };
 
     axios
@@ -49,25 +49,25 @@ function PlantEdit(props) {
       )
       .then((res) => {
         if (res.data.nickname) {
-          history.replace("/profile");
+          history.replace('/profile');
         }
       });
   };
   useEffect(() => {
     axios
-      .get("https://water-my-plants-61621.herokuapp.com/api/plants")
+      .get('https://water-my-plants-61621.herokuapp.com/api/plants')
       .then((res) => {
-        console.log("ran");
+        console.log('ran');
         const plants = res.data;
         const plant = plants.find((plant) => {
           return plant.id === parseInt(id);
         });
         console.log(plant);
         setFormValues({
-          nickname: plant.nickname ? plant.nickname : "",
-          species: plant.species ? plant.species : "",
-          h2o_frequency: plant.h2o_frequency ? plant.h2o_frequency : "",
-          image_url: plant.image_url ? plant.image_url : "",
+          nickname: plant.nickname ? plant.nickname : '',
+          species: plant.species ? plant.species : '',
+          h2o_frequency: plant.h2o_frequency ? plant.h2o_frequency : '',
+          image_url: plant.image_url ? plant.image_url : '',
         });
       });
   }, [id]);

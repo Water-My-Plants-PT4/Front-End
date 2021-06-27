@@ -1,17 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {
-  Typography,
-  AppBar,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  CssBaseline,
-  Grid,
-  Toolbar,
-  Container,
-} from '@material-ui/core';
+import { Typography, AppBar, CssBaseline, Toolbar } from '@material-ui/core';
 import EcoIcon from '@material-ui/icons/Eco'; // Leaf icon.
 import Box from '@material-ui/core/Box'; // Used for spacing.
 import Button from '@material-ui/core/Button'; // For menu button.

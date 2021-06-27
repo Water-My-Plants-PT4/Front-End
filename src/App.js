@@ -6,7 +6,7 @@ import Login from './components/Login';
 import UserHome from './views/user-home/UserHome';
 import PlantAdd from './views/plant-add/PlantAdd';
 import PlantEdit from './views/plant-edit/PlantEdit';
-import UserEdit from './views/user-edit/UserEdit';
+// import UserEdit from './views/user-edit/UserEdit';
 import Navigation from './components/Navigation';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';

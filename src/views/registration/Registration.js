@@ -1,19 +1,20 @@
 // import react ,useState , Martial Ui,axios
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     '& > *': {
+//       margin: theme.spacing(1),
+//       width: '25ch',
+//     },
+//   },
+// }));
+
 // 1) set up route in app.js
 // form state and an intial state to set form
 // functions
@@ -57,11 +58,11 @@ function Registration() {
         newUser
       )
       .then((res) => {
-        console.log(res);
+        history.push('/login');
       });
   };
 
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <div>

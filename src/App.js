@@ -25,6 +25,7 @@ function App() {
           <PrivateRoute exact path="/create-plant" component={PlantAdd} />
           <PrivateRoute path="/plants/:id" component={PlantEdit} />
         </Switch>
+      
         <Footer />
   
       </div>

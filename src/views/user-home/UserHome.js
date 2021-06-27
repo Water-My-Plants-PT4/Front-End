@@ -8,6 +8,7 @@ import { fetchPlants } from '../../actions';
 const Home = (props) => {
   useEffect(() => {
     props.fetchPlants();
+    console.log('1');
   }, []);
 
   return (

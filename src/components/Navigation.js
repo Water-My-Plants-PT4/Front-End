@@ -53,15 +53,46 @@ function Navigation() {
             alignItems="center"
             justifyContent="flex-end"
             width="100%">
-            <Button
+            {/* <Button
               aria-controls="simple-menu"
               aria-haspopup="true"
               onClick={handleClick}
               style={{ color: 'white' }} // This changes the MENU text color to white. It was black.
             >
               Open Menu
-            </Button>
-            <Menu
+            </Button> */}
+
+            <MenuItem onClick={handleClose}>
+                <Link to="/" style={{ color: 'white' }}>Home</Link>
+              </MenuItem>
+              {localStorage.getItem('token') && (
+                <MenuItem onClick={handleClose}>
+                  <Link to="/profile">View plants</Link>
+                </MenuItem>
+              )}
+              {localStorage.getItem('token') && (
+                <MenuItem onClick={handleClose}>
+                  <Link to="create-plant" style={{ color: 'white' }}>Create plant</Link>
+                </MenuItem>
+              )}
+              <MenuItem onClick={handleClose}>
+                <Link to="/login" style={{ color: 'white' }}>Log in</Link>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/sign-up" style={{ color: 'white' }}>Sign up</Link>
+              </MenuItem>
+              {localStorage.getItem('token') && (
+                <MenuItem onClick={handleClose}>
+                  <Link to="/" onClick={logOut} style={{ color: 'white' }}>
+                    Log Out
+                  </Link>
+                </MenuItem>
+              )}
+
+
+
+            {/* My original code below. I will try Tristans above. */}
+            {/* <Menu
               id="simple-menu"
               anchorEl={anchorEl}
               keepMounted
@@ -96,7 +127,7 @@ function Navigation() {
                   </Link>
                 </MenuItem>
               )}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </AppBar>

@@ -6,10 +6,12 @@ import Login from './components/Login';
 import UserHome from './views/user-home/UserHome';
 import PlantAdd from './views/plant-add/PlantAdd';
 import PlantEdit from './views/plant-edit/PlantEdit';
-// import UserEdit from './views/user-edit/UserEdit';
 import Navigation from './components/Navigation';
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
+// import UserEdit from './views/user-edit/UserEdit';
+
+import Home from './components/Home';
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       <div className="App">
         <Navigation />
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route exact path="/sign-up" component={Registration} />
           <Route exact path="/login" component={Login} />
           <PrivateRoute exact path="/profile" component={UserHome} />

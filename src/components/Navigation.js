@@ -73,13 +73,17 @@ function Navigation() {
                 <Link to="/">Home</Link>
               </MenuItem>
 
-              <MenuItem onClick={handleClose}>
-                <Link to="/profile">View plants</Link>
-              </MenuItem>
+              {localStorage.getItem('token') && (
+                <MenuItem onClick={handleClose}>
+                  <Link to="/profile">View plants</Link>
+                </MenuItem>
+              )}
 
-              <MenuItem onClick={handleClose}>
-                <Link to="create-plant">Create plant</Link>
-              </MenuItem>
+              {localStorage.getItem('token') && (
+                <MenuItem onClick={handleClose}>
+                  <Link to="create-plant">Create plant</Link>
+                </MenuItem>
+              )}
 
               <MenuItem onClick={handleClose}>
                 <Link to="/login">Log in</Link>
